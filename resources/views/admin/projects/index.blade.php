@@ -19,12 +19,6 @@
           Link repository
         </th>
         <th>
-          Linguaggi Utilizzati
-        </th>
-        <th>
-            Frameworks utilizzati
-        </th>
-        <th>
           Type
         </th>
         <th></th>
@@ -39,10 +33,8 @@
             <td><img src="{{$item->thumb_preview}}"></img></td>
             <td>{{$item->description}}</td>
             <td><a href="">{{$item->link_repo}}</a></td>
-            <td>{{$item->languages}}</td>
-            <td>{{$item->frameworks}}</td>
             <td>{{$item->type?->name}}</td>
-            <td><a href="{{route('admin.projects.show', $item->slug)}}">Apri</a></td>
+            <td><a href="{{route('admin.projects.show', $item)}}">Apri</a></td>
             <td><a href="{{route('admin.projects.edit', $item)}}">Modifica</a></td>
             
             <td> 

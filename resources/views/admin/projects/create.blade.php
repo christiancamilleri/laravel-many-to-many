@@ -35,6 +35,8 @@
       @enderror
     </div>
 
+    
+
     <div class="mb-3">
       <label for="thumb_preview">Link immagine preview</label>
       <textarea class="form-control @error('thumb_preview') is-invalid @enderror" name="thumb_preview" id="thumb_preview">{{old('thumb_preview')}}</textarea>
@@ -59,26 +61,6 @@
       <label for="link_repo">Link repository</label>
       <input class="form-control @error('link_repo') is-invalid @enderror" type="text" name="link_repo" id="link_repo"  value="{{old('link_repo')}}">
       @error('link_repo')
-        <div class="invalid-feedback">
-          {{$message}}
-        </div>
-      @enderror
-    </div>
-
-    <div class="mb-3">
-      <label for="languages">Linguaggi utilizzati</label>
-      <input class="form-control @error('languages') is-invalid @enderror" type="text" name="languages" id="languages"  value="{{old('languages')}}">
-      @error('languages')
-        <div class="invalid-feedback">
-          {{$message}}
-        </div>
-      @enderror
-    </div>
-
-    <div class="mb-3">
-      <label for="frameworks">Frameworks utilizzato</label>
-      <input class="form-control @error('frameworks') is-invalid @enderror" type="text" name="frameworks" id="frameworks"  value="{{old('frameworks')}}">
-      @error('frameworks')
         <div class="invalid-feedback">
           {{$message}}
         </div>

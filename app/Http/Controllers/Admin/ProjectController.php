@@ -129,16 +129,12 @@ class ProjectController extends Controller
             'thumb_preview' => 'required',
             'description' => 'required',
             'link_repo' => 'required',
-            'languages' => 'required',
-            'frameworks' => 'required',
             'type_id' => 'nullable|exists:types,id',
         ], [
             'name.required' => 'Questo campo non può rimanere vuoto',
             'thumb_preview.required' => 'Questo campo non può rimanere vuoto',
             'description.required' => 'Questo campo non può rimanere vuoto',
             'link_repo.required' => 'Questo campo non può rimanere vuoto',
-            'languages.required' => 'Questo campo non può rimanere vuoto',
-            'frameworks.required' => 'Questo campo non può rimanere vuoto',
             'type_id.exists' => 'Il type deve essere presente nel nostro sito',
 
         ])->validate();

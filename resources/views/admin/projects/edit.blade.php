@@ -66,25 +66,6 @@
       @enderror
     </div>
 
-    <div class="mb-3">
-      <label for="languages">Linguaggi utilizzati</label>
-      <input class="form-control @error('languages') is-invalid @enderror" type="text" name="languages" id="languages"  value="{{old('languages') ?? $project->languages}}">
-      @error('languages')
-        <div class="invalid-feedback">
-          {{$message}}
-        </div>
-      @enderror
-    </div>
-
-    <div class="mb-3">
-      <label for="frameworks">Frameworks utilizzato</label>
-      <input class="form-control @error('frameworks') is-invalid @enderror" type="text" name="frameworks" id="frameworks"  value="{{old('frameworks') ?? $project->frameworks}}">
-      @error('frameworks')
-        <div class="invalid-feedback">
-          {{$message}}
-        </div>
-      @enderror
-    </div>
 
 
     <button type="submit" class="btn btn-primary">Aggiungi</button>
