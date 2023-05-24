@@ -109,11 +109,11 @@ function routeNameContains($string) {
         
                 <div class="card {{ routeNameContains('posts.') ? 'border-primary' : '' }}">
                     <div class="card-header {{ routeNameContains('posts.') ? 'text-primary' : '' }}">
-                        Post
+                        Projects
                     </div>
                     <div class="list-group list-group-flush">
-                        <a href="{{route('admin.projects.index')}}" class="list-group-item list-group-item-action {{routeNameContains('projects.index') ? 'active' : ''}}">Tutti i post</a>
-                        <a href="{{route('admin.projects.create')}}" class="list-group-item list-group-item-action {{routeNameContains('projects.create') ? 'active' : ''}}">Aggiungi un post</a>
+                        <a href="{{route('admin.projects.index')}}" class="list-group-item list-group-item-action {{routeNameContains('projects.index') ? 'active' : ''}}">Tutti i progetti</a>
+                        <a href="{{route('admin.projects.create')}}" class="list-group-item list-group-item-action {{routeNameContains('projects.create') ? 'active' : ''}}">Aggiungi un progetto</a>
                     </div>
                 </div>
         
@@ -124,6 +124,16 @@ function routeNameContains($string) {
                     <div class="list-group list-group-flush">
                         <a href="{{route('admin.types.index')}}" class="list-group-item list-group-item-action {{routeNameContains('types.index') ? 'active' : ''}}">Tutte le tipologie</a>
                         <a href="{{route('admin.types.create')}}" class="list-group-item list-group-item-action {{routeNameContains('types.create') ? 'active' : ''}}">Aggiungi una tipologia</a>
+                    </div>
+                </div>
+
+                <div class="card {{ routeNameContains('posts.') ? 'border-primary' : '' }}">
+                    <div class="card-header {{ routeNameContains('posts.') ? 'text-primary' : '' }}">
+                        Linguaggi
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="{{route('admin.technologies.index')}}" class="list-group-item list-group-item-action {{routeNameContains('technologies.index') ? 'active' : ''}}">Tutti i linguaggi</a>
+                        <a href="{{route('admin.technologies.create')}}" class="list-group-item list-group-item-action {{routeNameContains('technologies.create') ? 'active' : ''}}">Aggiungi un linguaggio</a>
                     </div>
                 </div>
             </aside>
