@@ -6,7 +6,17 @@
         <li>
            Nome: {{$project->name}}
         </li>
-        <li>type: {{$project->type?->name}}</li>
+        <li>
+         type: {{$project->type?->name}}
+       </li>
+       <li>
+
+         <div class="d-flex py-3">
+          @foreach($project->technologies as $item)
+            <span class="badge rounded-pill mx-1" style="background-color: {{$item->color}}">{{$item->name}}</span>
+          @endforeach
+         </div>
+       </li>
         <li>
            Thumb preview: <br> <img src="{{$project->thumb_preview}}" alt=""> 
         </li>
@@ -15,12 +25,6 @@
         </li>
         <li>
            Link repo: {{$project->link_repo}}
-        </li>
-        <li>
-           Linguaggi utilizzati {{$project->languages}}
-        </li>
-        <li>
-           Frameworks utilizzati: {{$project->frameworks}}
         </li>
         
 

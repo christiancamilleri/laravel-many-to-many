@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="type_id">Categoria</label>
+      <label for="type_id">Types</label>
       <select name="type_id" id="type_id" class="form-select @error('type_id') is-invalid @enderror">
 
         <option value="">Nessuna</option>
@@ -34,6 +34,18 @@
           {{$message}}
         </div>
       @enderror
+    </div>
+
+    <div class="mb-3 form-group">
+      <h3>Linguaggi utilizzati</h3>
+
+      @foreach($technologies as $item)
+      <div class="form-check">
+        <input type="checkbox" id="technology-{{$item->id}}" name="technologies[]" value="{{$item->id}}" @checked($project->technologies->contains($item))>
+        <label for="technology-{{$item->id}}">{{$item->name}}</label>
+      </div>
+      @endforeach
+
     </div>
 
     <div class="mb-3">
@@ -68,7 +80,7 @@
 
 
 
-    <button type="submit" class="btn btn-primary">Aggiungi</button>
+    <button type="submit" class="btn btn-primary">Modifica</button>
 
   </form>
 

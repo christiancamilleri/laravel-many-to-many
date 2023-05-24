@@ -35,7 +35,18 @@
       @enderror
     </div>
 
-    
+      <div class="mb-3 form-group">
+        <h3>Linguaggi utilizzati</h3>
+
+        @foreach($technologies as $item)
+        <div class="form-check">
+          <input type="checkbox" id="technology-{{$item->id}}" name="technologies[]" value="{{$item->id}}">
+          <label for="technology-{{$item->id}}">{{$item->name}}</label>
+        </div>
+        @endforeach
+
+      </div>
+
 
     <div class="mb-3">
       <label for="thumb_preview">Link immagine preview</label>
