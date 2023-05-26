@@ -4,7 +4,7 @@
 <div class="container">
   <h1>Modifica il Progetto</h1>
 
-  <form action="{{route('admin.projects.update', $project)}}" method="POST" class="py-5">
+  <form action="{{route('admin.projects.update', $project)}}" method="POST" class="py-5" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -12,6 +12,16 @@
       <label for="name">Nome progetto</label>
       <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name" value="{{old('name') ?? $project->name}}">
       @error('name')
+        <div class="invalid-feedback">
+          {{$message}}
+        </div>
+      @enderror
+    </div>
+
+    <div class="mb-3">
+      <label for="thumb_preview">img</label>
+      <input class="form-control @error('thumb_preview') is-invalid @enderror" type="file" name="thumb_preview" id="thumb_preview">
+      @error('thumb_preview')
         <div class="invalid-feedback">
           {{$message}}
         </div>
@@ -48,16 +58,7 @@
 
     </div>
 
-    <div class="mb-3">
-      <label for="thumb_preview">Link immagine preview</label>
-      <textarea class="form-control @error('thumb_preview') is-invalid @enderror" name="thumb_preview" id="thumb_preview">{{old('thumb_preview') ?? $project->thumb_preview}}</textarea>
-      @error('thumb_preview')
-        <div class="invalid-feedback">
-          {{$message}}
-        </div>
-      @enderror
-    </div>
-
+  
     <div class="mb-3">
       <label for="description">Descrizione progetto</label>
       <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" id="description"  value="{{old('description') ?? $project->description}}">

@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 
@@ -45,12 +46,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $this->validation($request);
 
         $formData = $request->all();
 
 
+
+
         $newProject = new Project();
+
+        if ($request->hasFile('thumb_preview')) {
+
+            $path = Storage::put('post_images', $request->thumb_preview);
+
+            $formData['thumb_preview'] = $path;
+        }
 
         $newProject->fill($formData);
 
@@ -101,9 +113,20 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $this->validation($request);
-
+        dd($request);
 
         $formData = $request->all();
+
+        if ($request->hasFile('thumb_preview')) {
+
+            if ($project->thumb_preview) {
+
+                Storage::delete($project->thumb_preview);
+            }
+            $path = Storage::put('post_images', $request->thumb_preview);
+
+            $formData['thumb_preview'] = $path;
+        }
 
 
         $project->update($formData);
@@ -139,13 +162,14 @@ class ProjectController extends Controller
 
         $validator = FacadesValidator::make($formData, [
             'name' => 'required',
-            'thumb_preview' => 'required',
+            'thumb_preview' => 'nullable|image|max:4096',
             'description' => 'required',
             'link_repo' => 'required',
             'type_id' => 'nullable|exists:types,id',
         ], [
             'name.required' => 'Questo campo non può rimanere vuoto',
-            'thumb_preview.required' => 'Questo campo non può rimanere vuoto',
+            'thumb_preview.max' => "La dimensione del file è troppo grande",
+            'thumb_preview.image' => "Il file deve essere di tipo immagine",
             'description.required' => 'Questo campo non può rimanere vuoto',
             'link_repo.required' => 'Questo campo non può rimanere vuoto',
             'type_id.exists' => 'Il type deve essere presente nel nostro sito',

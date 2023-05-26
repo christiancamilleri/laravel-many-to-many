@@ -4,13 +4,23 @@
 <div class="container">
   <h1>Aggiungi un Progetto</h1>
 
-  <form action="{{route('admin.projects.store')}}" method="POST" class="py-5">
+  <form action="{{route('admin.projects.store')}}"  method="POST" class="py-5" enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">
       <label for="name">Nome progetto</label>
       <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name" value="{{old('name')}}">
       @error('name')
+        <div class="invalid-feedback">
+          {{$message}}
+        </div>
+      @enderror
+    </div>
+
+    <div class="mb-3">
+      <label for="thumb_preview">img</label>
+      <input class="form-control @error('thumb_preview') is-invalid @enderror" type="file" name="thumb_preview" id="thumb_preview">
+      @error('thumb_preview')
         <div class="invalid-feedback">
           {{$message}}
         </div>
@@ -46,17 +56,6 @@
         @endforeach
 
       </div>
-
-
-    <div class="mb-3">
-      <label for="thumb_preview">Link immagine preview</label>
-      <textarea class="form-control @error('thumb_preview') is-invalid @enderror" name="thumb_preview" id="thumb_preview">{{old('thumb_preview')}}</textarea>
-      @error('thumb_preview')
-        <div class="invalid-feedback">
-          {{$message}}
-        </div>
-      @enderror
-    </div>
 
     <div class="mb-3">
       <label for="description">Descrizione progetto</label>
